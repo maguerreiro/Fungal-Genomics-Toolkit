@@ -24,6 +24,3 @@ for LINEAGE in $LINEAGES; do
         --download_path "$HOME/Tools/miniconda3/envs/busco/busco_downloads" -f
 done
 
-else 
-  exit 0
-fi

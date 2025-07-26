@@ -10,6 +10,9 @@ source ~/Tools/miniconda3/etc/profile.d/conda.sh
 conda activate "$FUNANNOTATE_ENV"
 
 mkdir -p "$FUNANNOTATE_DIR/$GENOME_ID"
+mkdir -p "$PROTEOME_DIR"
+mkdir -p "$CDS_DIR"
+mkdir -p "$PROT_IDS"
 
 # The script sorts contigs by size, starting with shortest contigs it uses minimap2 to find contigs duplicated elsewhere, and then removes duplicated contigs.
 # Minimum length of contig to keep. Default = 500
@@ -21,7 +24,7 @@ funannotate sort -i $FUNANNOTATE_DIR/$GENOME_ID.cleaned  \
                  -o $FUNANNOTATE_DIR/$GENOME_ID.cleaned.sorted
 
 # Default is to run very simple repeat masking with tantan.
-funannotate mask -i $FUNANNOTATE_DIR/$GENOME_ID.sorted.cleaned.sorted  \
+funannotate mask -i $FUNANNOTATE_DIR/$GENOME_ID.cleaned.sorted  \
                  --cpus $n_cpus  \
                  -o $FUNANNOTATE_DIR/$GENOME_ID.cleaned.sorted.masked
 
@@ -38,9 +41,9 @@ funannotate predict -i $FUNANNOTATE_DIR/$GENOME_ID.cleaned.sorted.masked  \
 
 # Move files to folder
 mv $FUNANNOTATE_DIR/$GENOME_ID.cleaned  \
-    $FUNANNOTATE_DIR/$GENOME_ID.cleaned.sorted  \
-    $FUNANNOTATE_DIR/$GENOME_ID.cleaned.sorted.masked  \
-    $FUNANNOTATE_DIR/$GENOME_ID/
+   $FUNANNOTATE_DIR/$GENOME_ID.cleaned.sorted  \
+   $FUNANNOTATE_DIR/$GENOME_ID.cleaned.sorted.masked  \
+   $FUNANNOTATE_DIR/$GENOME_ID/
 
 # Change protein header, move file to proteome folder and renames extension to .faa
 awk '/^>/{print ">'$GENOME_ID'|" ++i; next}{print}' < $FUNANNOTATE_DIR/$GENOME_ID/predict_results/$GENOME_ID.proteins.fa > $PROTEOME_DIR/Proteome_headers/$GENOME_ID.faa

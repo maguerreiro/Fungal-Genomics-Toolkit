@@ -14,11 +14,11 @@ SHOW_HELP=0
 
 print_help() {
   cat << EOF
-Usage: $0 [options] [species ...]
+Usage: $0 [options] [genome ...]
 
 Options:
   -m --modules    Comma-separated list of modules to run (overrides config toggles)
-  -g --genome     Comma-separated list of species/genomes to run (overrides GENOME_ID on config)
+  -g --genome     Comma-separated list of genomes to run (overrides GENOME_ID on config)
   -f --file       Path to genomes.txt file (overrides -s and GENOME_ID on config)
   -h --help       Show this help message and exit
 
@@ -26,7 +26,7 @@ If no --file or --genome is provided, the default GENOME_ID from config.sh is us
 If no genome is given anywhere, will try to read genomes from 'genomes.txt' in current directory.
 
 Examples:
-  $0 -m busco,funannotate -s cryptococcus,another_species
+  $0 -m busco,funannotate -s cryptococcus,another_genome
   $0 -f my_genomes.txt
   $0 cryptococcus
 EOF
@@ -128,7 +128,7 @@ for GENOME_ID in "${GENOMES[@]}"; do
   for mod in "${!MODULES_MAP[@]}"; do
     if [ "${MODULES_MAP[$mod]}" == "Yes" ]; then
       echo ">> Running module: $mod for $GENOME_ID"
-      ./modules/${mod}.sh "$GENOME_ID"
+      ./modules/${mod}.sh "$GENOME_ID"  > "$LOG_DIR/${GENOME_ID}_${mod}.log" 2>&1
     fi
   done
 done
