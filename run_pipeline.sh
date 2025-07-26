@@ -1,4 +1,3 @@
-
 #!/bin/bash
 # run_pipeline.sh
 set -e
