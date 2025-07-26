@@ -1,23 +1,45 @@
 #!/bin/bash
 # config.sh
 
+# ============================
+# CONFIGURATION FILE
+# ============================
 
-### CONFIGURATION ###
+# Leave empty to use -s or get a list from genomes.txt
+GENOME_ID=
+
+# If -m is not specified, toggles in config.sh are used
 
 # Toggles (Yes/No)
 funannotate=Yes
-BUSCO=Yes
-SignalP6=No
+busco=Yes
+signalp6=No
 
 # Species model names
-Augustus_species=cryptococcus
-funannotate_species=coprinus
+Augustus_species="cryptococcus"
+funannotate_species="cryptococcus"
+
+# BUSCO lineages separated by a space
+LINEAGES="fungi basidiomycota tremellomycetes"
 
 # Paths
 GENOMES_DIR=
 PROTEOME_DIR=
+LOG_DIR="./logs"
 
+FUNANNOTATE_DIR="./results/funannotate"
+BUSCO_DIR="./results/busco"
+SIGNALP6_DIR="./results/signalp6"
 
 # Tools
+
+## Path to tools installed locally
 AUGUSTUS=
+FUNANNOTATE=
 EGGNOG=
+BUSCO=
+SIGNALP6=
+
+## Conda environment names for tools installed as conda environments
+BUSCO_ENV="busco"
+FUNANNOTATE_ENV="funannotate"
