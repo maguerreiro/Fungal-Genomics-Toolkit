@@ -8,6 +8,9 @@
 # Leave empty to use -s or get a list from genomes.txt
 GENOME_ID=
 
+# Old parameter. Keep for now, or it will break.
+DATASET=funannotate
+
 # If -m is not specified, toggles in config.sh are used
 
 # Toggles (Yes/No)
@@ -38,6 +41,7 @@ FUNANNOTATE=
 EGGNOG=
 BUSCO=
 SIGNALP6=
+seqkit=
 
 ## Conda environment names for tools installed as conda environments
 BUSCO_ENV="busco"
