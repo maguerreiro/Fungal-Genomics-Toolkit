@@ -17,10 +17,10 @@ print_help() {
 Usage: $0 [options] [genome ...]
 
 Options:
-  -m --modules    Comma-separated list of modules to run (overrides config toggles)
-  -g --genome     Comma-separated list of genomes to run (overrides GENOME_ID on config)
-  -f --file       Path to genomes.txt file (overrides -s and GENOME_ID on config)
-  -h --help       Show this help message and exit
+  -m --modules    Comma-separated list of modules to run (overrides config toggles).
+  -g --genome     Comma-separated list of genomes without extension to run (overrides GENOME_ID on config).
+  -f --file       Path to genomes.txt file (overrides -s and GENOME_ID on config).
+  -h --help       Show this help message and exit.
 
 If no --file or --genome is provided, the default GENOME_ID from config.sh is used.
 If no genome is given anywhere, will try to read genomes from 'genomes.txt' in current directory.
