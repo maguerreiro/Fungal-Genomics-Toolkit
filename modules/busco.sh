@@ -1,4 +1,3 @@
-
 #!/bin/bash
 # busco.sh
 set -e
