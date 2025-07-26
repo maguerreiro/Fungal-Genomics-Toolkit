@@ -32,7 +32,6 @@ BUSCO_DIR="./results/busco"
 SIGNALP6_DIR="./results/signalp6"
 
 # Tools
-
 ## Path to tools installed locally
 AUGUSTUS=
 FUNANNOTATE=
