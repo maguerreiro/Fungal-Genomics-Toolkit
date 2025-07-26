@@ -5,6 +5,8 @@
 # CONFIGURATION FILE
 # ============================
 
+n_cpus=28
+
 # Leave empty to use -s or get a list from genomes.txt
 GENOME_ID=
 

@@ -22,14 +22,14 @@ funannotate sort -i $FUNANNOTATE_DIR/$GENOME_ID.cleaned  \
 
 # Default is to run very simple repeat masking with tantan.
 funannotate mask -i $FUNANNOTATE_DIR/$GENOME_ID.sorted.cleaned.sorted  \
-                 --cpus 28  \
+                 --cpus $n_cpus  \
                  -o $FUNANNOTATE_DIR/$GENOME_ID.cleaned.sorted.masked
 
 # Runs gene prediction pipeline
 funannotate predict -i $FUNANNOTATE_DIR/$GENOME_ID.cleaned.sorted.masked  \
                     -o $FUNANNOTATE_DIR/$GENOME_ID  \
                     --species $GENOME_ID   \
-                    --cpus 28  \
+                    --cpus $n_cpus  \
                     --augustus_species $funannotate_species  \
                     --busco_seed_species $funannotate_species  \
                     --busco_db basidiomycota  \
