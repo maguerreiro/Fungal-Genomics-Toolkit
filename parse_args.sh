@@ -111,37 +111,4 @@ while [[ $# -gt 0 ]]; do
 done
 
 
-  # Determine GENOMES
-  if [ -n "$GENOMES_FILE" ]; then
-    if [ ! -f "$GENOMES_FILE" ]; then
-      echo "Error: genomes file '$GENOMES_FILE' not found." >&2
-      exit 1
-    fi
-    mapfile -t GENOMES < "$GENOMES_FILE"
-  elif [ ${#SELECTED_GENOME[@]} -gt 0 ]; then
-    GENOMES=("${SELECTED_GENOME[@]}")
-  elif [ -n "$GENOME_ID" ]; then
-    GENOMES=("$GENOME_ID")
-  elif [ $# -gt 0 ]; then
-    GENOMES=("$@")
-  elif [ -f "genomes.txt" ]; then
-    mapfile -t GENOMES < "genomes.txt"
-  else
-    echo "Error: No genomes provided." >&2
-    exit 1
-  fi
 
-  # Use config toggles if no modules specified
-  if [ ${#MODULES_MAP[@]} -eq 0 ]; then
-    for mod in "${ALL_MODULES[@]}"; do
-      toggle="${!mod}"
-      if [[ "${toggle,,}" == "yes" || "${toggle,,}" == "y" ]]; then
-        MODULES_MAP["$mod"]="Yes"
-      fi
-    done
-  fi
-
-  if [ ${#MODULES_MAP[@]} -eq 0 ]; then
-    echo "No modules selected. Exiting."
-    exit 1
-  fi
