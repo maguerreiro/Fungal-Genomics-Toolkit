@@ -145,4 +145,3 @@ done
     echo "No modules selected. Exiting."
     exit 1
   fi
-}
