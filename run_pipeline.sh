@@ -11,12 +11,14 @@ setup_environment
 parse_args "$@"
 
 
-if [ "$CHECK" -eq 1 ]; then
+if [ "${CHECK:-0}" -eq 1 ]; then
   check_inputs
 fi
 
+
 mkdir -p "$LOG_DIR"
 echo "Module run summary:" > "$LOG_DIR/summary.txt"
+
 
 for GENOME_ID in "${GENOMES[@]}"; do
   echo "=== Processing $GENOME_ID ==="
