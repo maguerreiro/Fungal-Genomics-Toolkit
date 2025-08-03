@@ -38,6 +38,8 @@ EOF
 }
 
 
+ALL_MODULES=(funannotate busco signalp6)
+
 print_modules() {
   cat << EOF
 
