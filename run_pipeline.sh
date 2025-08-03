@@ -36,7 +36,10 @@ Examples:
 EOF
 }
 
-ALL_MODULES=(funannotate busco signalp6)
+ALL_MODULES=(funannotate 
+             busco 
+             signalp6)
+
 
 # Parse arguments
 while [[ $# -gt 0 ]]; do
@@ -73,7 +76,7 @@ while [[ $# -gt 0 ]]; do
       ;;
 
     --list-modules)
-      echo "Available modules: ${SELECTED_MODULES[@]}"
+      echo "Available modules: ${ALL_MODULES[*]}"
       exit 0
       ;;
 
