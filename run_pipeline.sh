@@ -36,13 +36,19 @@ Examples:
 EOF
 }
 
-ALL_MODULES=() {
-    cat << EOF
+
+print_modules=() {
+  cat << EOF
+"Available modules:"
+
   funannotate     Gene prediction.
   busco           Genome completeness.
   signalp6        Signal peptide prediction.
+
 EOF
 }       
+
+
 
 
 # Parse arguments
@@ -80,8 +86,7 @@ while [[ $# -gt 0 ]]; do
       ;;
 
     --list-modules)
-      echo "Available modules:"
-      ALL_MODULES
+      print_modules
       exit 0
       ;;
 
