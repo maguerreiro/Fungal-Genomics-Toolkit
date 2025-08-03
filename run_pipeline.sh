@@ -12,6 +12,8 @@ GENOMES_FILE=""
 SHOW_HELP=0
 DRY_RUN=0
 
+declare -A MODULES_MAP
+
 
 print_help() {
   cat << EOF
@@ -23,7 +25,6 @@ Options:
   -f --file         Path to genomes.txt file (overrides -s and GENOME_ID on config).
   --dry-run         Checks all inputs and modules.
   --list-modules    List of available modules.
-  --list-genomes    List of genomes to be processed.
   -h --help         Show this help message and exit.
 
 If no --file or --genome is provided, the default GENOME_ID from config.sh is used.
@@ -88,23 +89,6 @@ while [[ $# -gt 0 ]]; do
 
     --list-modules)
       print_modules
-      exit 0
-      ;;
-
-    --list-genomes)
-      if [ -n "$GENOMES_FILE" ]; then
-        mapfile -t GENOMES < "$GENOMES_FILE"
-      elif [ ${#SELECTED_GENOME[@]} -gt 0 ]; then
-        GENOMES=("${SELECTED_GENOME[@]}")
-      elif [ -n "$GENOME_ID" ]; then
-        GENOMES=("$GENOME_ID")
-      elif [ $# -gt 0 ]; then
-        GENOMES=("$@")
-      elif [ -f "genomes.txt" ]; then
-        mapfile -t GENOMES < "genomes.txt"
-      fi
-      echo "Genomes to be processed:"
-      printf '%s\n' "${GENOMES[@]}"
       exit 0
       ;;
 
