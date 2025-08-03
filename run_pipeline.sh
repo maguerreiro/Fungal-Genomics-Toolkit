@@ -37,10 +37,12 @@ EOF
 }
 
 ALL_MODULES=() {
+    cat << EOF
   funannotate     Gene prediction.
   busco           Genome completeness.
   signalp6        Signal peptide prediction.
- }       
+EOF
+}       
 
 
 # Parse arguments
@@ -78,7 +80,8 @@ while [[ $# -gt 0 ]]; do
       ;;
 
     --list-modules)
-      echo "Available modules: ${ALL_MODULES[*]}"
+      echo "Available modules:"
+      ALL_MODULES
       exit 0
       ;;
 
