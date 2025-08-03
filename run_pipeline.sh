@@ -136,7 +136,7 @@ if [ -n "$GENOMES_FILE" ]; then
     exit 1
   fi
   mapfile -t GENOMES < "$GENOMES_FILE"
-elif [ ${#SELECTED_GENOME[@]} -gt 0 ]; then
+elif [ ${SELECTED_GENOME[@]} -gt 0 ]; then
   GENOMES=("${SELECTED_GENOME[@]}")
 elif [ -n "$GENOME_ID" ]; then
   GENOMES=("$GENOME_ID")
