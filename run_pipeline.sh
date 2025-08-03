@@ -36,9 +36,11 @@ Examples:
 EOF
 }
 
-ALL_MODULES=(funannotate 
-             busco 
-             signalp6)
+ALL_MODULES=(
+  funannotate     Gene prediction.
+  busco           Genome completeness.
+  signalp6        Signal peptide prediction.
+  )       
 
 
 # Parse arguments
