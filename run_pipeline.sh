@@ -232,9 +232,14 @@ check_inputs() {
   done
 
 
+
+echo "GENOMES: ${GENOMES[*]}"
 echo "GENOME_DIR = '$GENOME_DIR'"
 echo "Checking file: ${GENOME_DIR}/${genome}.fna"
 ls -l ${GENOME_DIR}
+
+
+
 
 
   echo ""
