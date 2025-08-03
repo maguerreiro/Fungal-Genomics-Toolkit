@@ -179,17 +179,16 @@ check_inputs() {
   done
 
   echo "--- Dry-run plan ---"
-    for mod in "${!MODULES_MAP[@]}"; do
       if [ "${MODULES_MAP[$mod]}" == "Yes" ]; then
         echo "Selected modules:" 
-        echo "                  ${mod}.sh"
+        echo "  ${mod}.sh"
       fi
-    done
-  for genome in "${GENOMES[@]}"; do
+     
+    for genome in "${GENOMES[@]}"; do
           echo "Selected genomes:"
-          echo                  "$genome"
+          echo "  $genome"
     
-  done
+    done
 
   if [ "$all_ok" -ne 1 ]; then
     echo "One or more required files or scripts are missing or not executable."
