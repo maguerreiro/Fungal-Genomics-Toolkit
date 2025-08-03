@@ -243,9 +243,10 @@ check_inputs() {
 
 
 
-if [ "$CHECK" -eq 1 ]; then
+if [ "${CHECK:-0}" -eq 1 ]; then
   check_inputs
 fi
+
 
 
 

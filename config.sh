@@ -48,3 +48,6 @@ seqkit=
 ## Conda environment names for tools installed as conda environments
 BUSCO_ENV="busco"
 FUNANNOTATE_ENV="funannotate"
+
+
+chmod +x ./modules/*.sh
