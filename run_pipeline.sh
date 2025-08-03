@@ -182,7 +182,8 @@ check_inputs() {
   for genome in "${GENOMES[@]}"; do
     for mod in "${!MODULES_MAP[@]}"; do
       if [ "${MODULES_MAP[$mod]}" == "Yes" ]; then
-        echo "Would run: ./modules/${mod}.sh $genome"
+        echo "Selected modules: ./modules/${mod}.sh"
+        echo "Selected genomes: $genome"
       fi
     done
   done
