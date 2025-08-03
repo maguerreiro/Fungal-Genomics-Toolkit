@@ -39,7 +39,8 @@ EOF
 
 print_modules=() {
   cat << EOF
-"Available modules:"
+
+Available modules:
 
   funannotate     Gene prediction.
   busco           Genome completeness.
