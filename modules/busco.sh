@@ -11,7 +11,7 @@ fi
 
 
 GENOME_ID=$1
-source config.sh
+
 
 source ~/Tools/miniconda3/etc/profile.d/conda.sh
 conda activate "$BUSCO_ENV"
