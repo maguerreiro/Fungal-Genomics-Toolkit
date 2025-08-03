@@ -8,7 +8,6 @@ source parse_args.sh
 source check_inputs.sh
 
 setup_environment
-parse_args "$@"
 
 
 if [ "${CHECK:-0}" -eq 1 ]; then
