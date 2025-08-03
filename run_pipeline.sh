@@ -37,7 +37,7 @@ EOF
 }
 
 
-print_modules=() {
+print_modules() {
   cat << EOF
 
 Available modules:
