@@ -23,7 +23,7 @@ Options:
   -m --modules      Comma-separated list of modules to run (overrides config toggles).
   -g --genome       Comma-separated list of genomes without extension to run (overrides GENOME_ID on config).
   -f --file         Path to genomes.txt file (overrides -s and GENOME_ID on config).
-  --dry-run         Checks all inputs and modules.
+  --check           Checks all inputs and modules.
   --list-modules    List of available modules.
   -h --help         Show this help message and exit.
 
@@ -84,8 +84,8 @@ while [[ $# -gt 0 ]]; do
       shift
       ;;
 
-    --dry-run)
-      DRY_RUN=1
+    --check)
+      CHECK=1
       shift
       ;;
 
@@ -178,7 +178,7 @@ check_inputs() {
     done
   done
 
-  echo "--- Dry-run plan ---"
+  echo "--- CHECK ---"
   echo "Selected modules:"
       for mod in "${!MODULES_MAP[@]}"; do
         if [ "${MODULES_MAP[$mod]}" == "Yes" ]; then
@@ -192,7 +192,7 @@ check_inputs() {
         echo "  $genome"
       done
       echo ""
-      
+
 
   if [ "$all_ok" -ne 1 ]; then
     echo "One or more required files or scripts are missing or not executable."
@@ -201,7 +201,7 @@ check_inputs() {
   exit 0
 }
 
-if [ "$DRY_RUN" -eq 1 ]; then
+if [ "$CHECK" -eq 1 ]; then
   check_inputs
 fi
 
