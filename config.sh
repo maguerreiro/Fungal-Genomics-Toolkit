@@ -49,5 +49,3 @@ seqkit=
 BUSCO_ENV="busco"
 FUNANNOTATE_ENV="funannotate"
 
-
-chmod +x ./modules/*.sh
