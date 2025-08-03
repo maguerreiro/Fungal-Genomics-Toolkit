@@ -212,6 +212,7 @@ check_inputs() {
     echo "  $g"
   done
 
+  echo ""
   echo "Missing genome files:"
   for g in "${missing_genomes[@]}"; do
     echo "  $g"
@@ -223,13 +224,13 @@ check_inputs() {
     echo "  ${m}.sh"
   done
 
+  echo ""
   echo "Missing or non-executable modules:"
   for m in "${missing_modules[@]}"; do
     echo "  ${m}.sh"
   done
 
   echo ""
-
   if [ "$all_ok" -ne 1 ]; then
     echo "ERROR: One or more required files or scripts are missing or not executable."
     exit 1
