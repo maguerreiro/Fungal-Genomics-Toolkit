@@ -205,6 +205,7 @@ check_inputs() {
   for genome in "${GENOMES[@]}"; do
     echo "  $genome"
   done
+    echo "==================="
 
   echo ""
   echo "Found genome files:"
