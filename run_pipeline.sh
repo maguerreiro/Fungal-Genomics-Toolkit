@@ -1,7 +1,7 @@
 #!/bin/bash
 # run_pipeline.sh
-#set -e
-set -x
+set -e
+
 source config.sh
 
 
