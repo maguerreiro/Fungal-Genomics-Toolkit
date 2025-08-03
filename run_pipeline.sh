@@ -20,12 +20,13 @@ mkdir -p "$LOG_DIR"
 echo "Module run summary:" > "$LOG_DIR/summary.txt"
 
 
+# Run modules
 for GENOME_ID in "${GENOMES[@]}"; do
   echo "=== Processing $GENOME_ID ==="
   for mod in "${!MODULES_MAP[@]}"; do
-    if [[ "${MODULES_MAP[$mod]}" == "Yes" ]]; then
+    if [ "${MODULES_MAP[$mod]}" == "Yes" ]; then
       echo ">> Running module: $mod for $GENOME_ID"
-      ./modules/${mod}.sh "$GENOME_ID" > "$LOG_DIR/${GENOME_ID}_${mod}.log" 2>&1
+      ./modules/${mod}.sh "$GENOME_ID"  > "$LOG_DIR/${GENOME_ID}_${mod}.log" 2>&1
     fi
   done
 done

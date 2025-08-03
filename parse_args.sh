@@ -1,15 +1,55 @@
 #!/bin/bash
 # parse_args.sh - argument parsing function
 
-parse_args() {
-  # Initialize variables
-  SELECTED_MODULES=()
-  SELECTED_GENOME=()
-  GENOMES_FILE=""
-  CHECK=0
-  DRY_RUN=0
+# Initialize variables
+SELECTED_MODULES=()
+SELECTED_GENOME=()
+GENOMES_FILE=""
+SHOW_HELP=0
+CHECK=0
 
-  declare -A MODULES_MAP
+declare -A MODULES_MAP
+
+
+print_help() {
+  cat << EOF
+Usage: $0 [options] [genome ...]
+
+Options:
+  -m --modules      Comma-separated list of modules to run (overrides config toggles).
+  -g --genome       Comma-separated list of genomes without extension to run (overrides GENOME_ID on config).
+  -f --file         Path to genomes.txt file (overrides -s and GENOME_ID on config).
+  --check           Checks all inputs and modules.
+  --list-modules    List of available modules.
+  -h --help         Show this help message and exit.
+
+If no --file or --genome is provided, the default GENOME_ID from config.sh is used.
+If no genome is given anywhere, will try to read genomes from 'genomes.txt' in current directory.
+
+Examples:
+  $0 -m busco,funannotate -s cryptococcus,another_genome
+  $0 -f my_genomes.txt
+  $0 cryptococcus
+EOF
+}
+
+
+ALL_MODULES=(funannotate busco signalp6)
+
+print_modules() {
+  cat << EOF
+
+Available modules:
+
+  funannotate     Gene prediction.
+  busco           Genome completeness.
+  signalp6        Signal peptide prediction.
+
+EOF
+}       
+
+
+
 
 # Parse arguments
 while [[ $# -gt 0 ]]; do
