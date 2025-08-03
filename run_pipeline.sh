@@ -120,7 +120,7 @@ if [ -n "$GENOMES_FILE" ]; then
     exit 1
   fi
   mapfile -t GENOMES < "$GENOMES_FILE"
-elif [ ${SELECTED_GENOME[@]} -gt 0 ]; then
+elif [ ${#SELECTED_GENOME[@]} -gt 0 ]; then
   GENOMES=("${SELECTED_GENOME[@]}")
 elif [ -n "$GENOME_ID" ]; then
   GENOMES=("$GENOME_ID")
@@ -135,7 +135,7 @@ fi
 
 
 # Use config.sh toggles if -m not given
-if [ ${MODULES_MAP[@]} -eq 0 ]; then
+if [ ${#MODULES_MAP[@]} -eq 0 ]; then
   for mod in "${ALL_MODULES[@]}"; do
     toggle="${!mod}"
     if [[ "${toggle,,}" == "yes" || "${toggle,,}" == "y" ]]; then
@@ -144,7 +144,7 @@ if [ ${MODULES_MAP[@]} -eq 0 ]; then
   done
 fi
 
-if [ ${MODULES_MAP[@]} -eq 0 ]; then
+if [ ${#MODULES_MAP[@]} -eq 0 ]; then
   echo "No modules selected. Exiting."
   exit 1
 fi

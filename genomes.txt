@@ -1,2 +1,2 @@
-test_genome.fasta
-test_genome2.fasta
+test_genome.fna
+test_genome2.fna
