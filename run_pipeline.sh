@@ -231,16 +231,17 @@ check_inputs() {
     echo "  ${m}.sh"
   done
 
-  echo ""
-  if [ "$all_ok" -ne 1 ]; then
-    echo "ERROR: One or more required files or scripts are missing or not executable."
-    exit 1
-  fi
 
 echo "GENOME_DIR = '$GENOME_DIR'"
 echo "Checking file: ${GENOME_DIR}/${genome}.fna"
 ls -l ${GENOME_DIR}
 
+
+  echo ""
+  if [ "$all_ok" -ne 1 ]; then
+    echo "ERROR: One or more required files or scripts are missing or not executable."
+    exit 1
+  fi
 
   exit 0
 }
