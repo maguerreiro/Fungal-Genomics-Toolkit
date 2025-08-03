@@ -237,6 +237,11 @@ check_inputs() {
     exit 1
   fi
 
+echo "GENOME_DIR = '$GENOME_DIR'"
+echo "Checking file: ${GENOME_DIR}/${genome}.fna"
+ls -l ${GENOME_DIR}
+
+
   exit 0
 }
 
