@@ -179,12 +179,12 @@ check_inputs() {
   done
 
   echo "--- Dry-run plan ---"
-  for genome in "${GENOMES[@]}"; do
     for mod in "${!MODULES_MAP[@]}"; do
       if [ "${MODULES_MAP[$mod]}" == "Yes" ]; then
         echo "Selected modules: ./modules/${mod}.sh"
-        echo "Selected genomes: $genome"
       fi
+    for genome in "${GENOMES[@]}"; do
+          echo "Selected genomes: $genome"
     done
   done
 
