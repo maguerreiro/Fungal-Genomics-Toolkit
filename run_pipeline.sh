@@ -1,7 +1,7 @@
 #!/bin/bash
 # run_pipeline.sh
-set -e
-
+#set -e
+set -x
 source config.sh
 
 
@@ -231,18 +231,7 @@ check_inputs() {
     echo "  ${m}.sh"
   done
 
-
-
-echo "GENOMES: ${GENOMES[*]}"
-echo "GENOME_DIR = '$GENOME_DIR'"
-echo "Checking file: ${GENOME_DIR}/${genome}.fna"
-ls -l ${GENOME_DIR}
-
-
-
-
-
-  echo ""
+ echo ""
   if [ "$all_ok" -ne 1 ]; then
     echo "ERROR: One or more required files or scripts are missing or not executable."
     exit 1
