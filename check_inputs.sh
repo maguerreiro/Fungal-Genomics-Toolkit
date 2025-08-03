@@ -1,6 +1,7 @@
 #!/bin/bash
 # check_inputs.sh - input and module validation function
 
+source parse_args.sh
 
 check_inputs() {
   local all_ok=1
