@@ -183,12 +183,10 @@ check_inputs() {
         echo "Selected modules:" 
         echo "  ${mod}.sh"
       fi
-     
-    for genome in "${GENOMES[@]}"; do
+          echo ""
           echo "Selected genomes:"
           echo "  ${GENOMES[@]}"
     
-    done
 
   if [ "$all_ok" -ne 1 ]; then
     echo "One or more required files or scripts are missing or not executable."
