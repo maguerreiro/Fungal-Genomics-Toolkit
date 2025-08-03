@@ -28,7 +28,7 @@ funannotate_species="cryptococcus"
 LINEAGES="fungi basidiomycota tremellomycetes"
 
 # Paths
-GENOMES_DIR=
+GENOMES_DIR="genomes"
 PROTEOME_DIR=
 LOG_DIR="./logs"
 
