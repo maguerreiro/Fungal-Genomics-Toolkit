@@ -73,7 +73,7 @@ while [[ $# -gt 0 ]]; do
       ;;
 
     --list-modules)
-      echo "Available modules: ${ALL_MODULES[*]}"
+      echo "Available modules: ${SELECTED_MODULES[@]}"
       exit 0
       ;;
 
