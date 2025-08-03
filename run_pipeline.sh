@@ -186,7 +186,7 @@ check_inputs() {
      
     for genome in "${GENOMES[@]}"; do
           echo "Selected genomes:"
-          echo "  $genome"
+          echo "  ${GENOMES[@]}"
     
     done
 
