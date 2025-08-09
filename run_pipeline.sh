@@ -3,9 +3,9 @@
 set -e
 
 source config.sh
-source setup.sh
-source parse_args.sh
-source check_inputs.sh
+source utils/setup.sh
+source utils/parse_args.sh
+source utils/check_inputs.sh
 
 setup_environment
 
