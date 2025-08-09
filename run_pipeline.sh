@@ -15,9 +15,6 @@ if [ "${CHECK:-0}" -eq 1 ]; then
 fi
 
 
-mkdir -p "$LOG_DIR"
-echo "Module run summary:" > "$LOG_DIR/summary.txt"
-
 
 # Run modules
 for GENOME_ID in "${GENOMES[@]}"; do
