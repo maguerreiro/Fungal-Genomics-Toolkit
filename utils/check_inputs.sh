@@ -75,8 +75,8 @@ check_inputs() {
     fi
   done
 
- echo ""
   if [ "$all_genomes_ok" -ne 1 ]; then
+    echo ""
     echo -e "\033[31m ERROR: One or more genomes are missing. \033[0m"
     echo "Missing genome files:"
       for g in "${missing_genomes[@]}"; do
@@ -86,8 +86,8 @@ check_inputs() {
     exit 1
   fi
 
-   echo ""
   if [ "$all_modules_ok" -ne 1 ]; then
+    echo ""
     echo -e "\033[31m ERROR: One or more scripts are missing or not executable. \033[0m"
     echo ""
     echo "Missing or non-executable modules:"
@@ -98,11 +98,12 @@ check_inputs() {
     exit 1
   fi
 
-   echo ""
   if [ "$all_modules_ok" -eq 1 ] && [ "$all_genomes_ok" -eq 1 ]; then
+    echo ""
     echo "All genomes and modules were found."
+    echo ""
   fi
-     echo ""
+
   exit 0
 }
 
@@ -192,9 +193,8 @@ check_full_inputs() {
     echo "==================="
 
 
-
-  echo ""
   if [ "$all_genomes_ok" -ne 1 ]; then
+    echo ""
     echo -e "\033[31m ERROR: One or more genomes are missing. \033[0m"
     echo ""
     echo "Missing genome files:"
@@ -205,8 +205,9 @@ check_full_inputs() {
     exit 1
   fi
 
-   echo ""
+
   if [ "$all_modules_ok" -ne 1 ]; then
+    echo ""
     echo -e "\033[31m ERROR: One or more scripts are missing or not executable. \033[0m"
     echo ""
     echo "Missing or non-executable modules:"
@@ -217,11 +218,11 @@ check_full_inputs() {
     exit 1
   fi
 
-   echo ""
   if [ "$all_modules_ok" -eq 1 ] && [ "$all_genomes_ok" -eq 1 ]; then
-    echo "All genomes and modules were found."
+       echo ""
+       echo "All genomes and modules were found."
   fi
-     echo ""
+    echo ""
 
   exit 0
 }
