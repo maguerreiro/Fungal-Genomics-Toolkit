@@ -82,6 +82,7 @@ check_inputs() {
       for g in "${missing_genomes[@]}"; do
     echo "  $g"
   done 
+    echo ""
     exit 1
   fi
 
@@ -97,7 +98,7 @@ check_inputs() {
     exit 1
   fi
 
-
+   echo ""
   if [ "$all_modules_ok" -eq 1  & "$all_genomes_ok" -eq 1]; then
     echo "All genomes and modules were found."
   fi
