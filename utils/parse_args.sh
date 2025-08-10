@@ -20,6 +20,7 @@ Options:
   -g --genome       Comma-separated list of genomes without extension to run (overrides GENOME_ID on config).
   -f --file         Path to genomes.txt file (overrides -s and GENOME_ID on config).
   --check           Checks all inputs and modules.
+  --check-full      Checks all inputs and modules. Provides detailed output.
   --list-modules    List of available modules.
   -h --help         Show this help message and exit.
 
@@ -82,6 +83,11 @@ while [[ $# -gt 0 ]]; do
 
     --check)
       CHECK=1
+      shift
+      ;;
+
+    --check-full)
+      CHECK-FULL=1
       shift
       ;;
 
