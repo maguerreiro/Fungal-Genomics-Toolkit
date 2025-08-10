@@ -52,24 +52,26 @@ check_inputs_core() {
 
  # Check genomes
     if [ "$verbose" == "yes" ]; then
-        echo ""
-        echo "Checking genome files in: $GENOME_DIR"
-        for genome in "${GENOMES[@]}"; do
-            genome_path="${GENOME_DIR}/${genome}.fna"  # Adjust extension if needed
-            if [ -f "$genome_path" ]; then
-                if [[ "$verbose" == "yes" ]]; then
-                    echo "[OK] $genome_path"
-                fi
-                found_genomes+=("$genome")
-            else
-                if [[ "$verbose" == "yes" ]]; then
-                    echo "[MISSING] $genome_path"
-                fi
-                missing_genomes+=("$genome")
-                all_genomes_ok=0
-            fi
-        done
+      echo ""
+      echo "Checking genome files in: $GENOME_DIR"
     fi
+
+  for genome in "${GENOMES[@]}"; do
+    genome_path="${GENOME_DIR}/${genome}.fna"  # Adjust extension if needed
+    if [ -f "$genome_path" ]; then
+        if [[ "$verbose" == "yes" ]]; then
+            echo "[OK] $genome_path"
+        fi
+        found_genomes+=("$genome")
+    else
+        if [[ "$verbose" == "yes" ]]; then
+            echo "[MISSING] $genome_path"
+        fi
+        missing_genomes+=("$genome")
+        all_genomes_ok=0
+    fi
+  done
+
 
 
 # Check modules
