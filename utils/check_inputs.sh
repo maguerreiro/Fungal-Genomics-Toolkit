@@ -103,28 +103,38 @@ check_inputs_core() {
         echo "==================="
     fi
 
-    # Error handling
-    local had_error=0
 
-    if (( ! all_genomes_ok )); then
-        echo -e "\n\033[31mERROR: One or more genomes are missing.\033[0m"
-        printf '  %s\n' "${missing_genomes[@]}"
-        had_error=1
+
+    if [ "$all_genomes_ok" -ne 1 ]; then
+      echo ""
+      echo -e "\033[31mERROR: One or more genomes are missing.\033[0m"
+      echo ""
+      echo "Missing genome files:"
+        for g in "${missing_genomes[@]}"; do
+          echo "  $g"
+        done 
+      echo ""
+      exit 1
     fi
 
     if (( ! all_modules_ok )); then
-        echo -e "\n\033[31mERROR: One or more scripts are missing or not executable.\033[0m"
-        printf '  %s.sh\n' "${missing_modules[@]}"
-        had_error=1
+    echo ""
+    echo -e "\033[31mERROR: One or more scripts are missing or not executable.\033[0m"
+    echo ""
+    echo "Missing or non-executable modules:"
+      for m in "${missing_modules[@]}"; do
+       echo "  ${m}.sh"
+      done
+    echo ""
     fi
 
-    if (( had_error )); then
-        exit 1
+    if [ "$all_modules_ok" -eq 1 ] && [ "$all_genomes_ok" -eq 1 ]; then
+        echo ""
+        echo "All genomes and modules were found."
+      echo ""
     fi
-
-    echo ""
-    echo "All genomes and modules were found."
-    echo ""
+    exit 0
+  }
 
 }
 
