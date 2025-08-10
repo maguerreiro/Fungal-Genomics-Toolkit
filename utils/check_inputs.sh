@@ -197,8 +197,8 @@ check_full_inputs() {
     echo "ERROR: One or more genomes are missing."
     echo "Missing genome files:"
       for g in "${missing_genomes[@]}"; do
-    echo "  $g"
-  done 
+         echo "  $g"
+      done 
     echo ""
     exit 1
   fi
