@@ -1,6 +1,7 @@
 #!/bin/bash
 
-# --- GENOMES SELECTION ---
+
+# --- CHECK GENOMES --- #
 if [ -n "$GENOMES_FILE" ]; then
     if [ ! -f "$GENOMES_FILE" ]; then
         echo "Error: genomes file '$GENOMES_FILE' not found." >&2
@@ -20,7 +21,8 @@ else
     exit 1
 fi
 
-# --- MODULES SELECTION ---
+
+# --- CHECK MODULES --- #
 if [ ${#MODULES_MAP[@]} -eq 0 ]; then
     for mod in "${ALL_MODULES[@]}"; do
         toggle="${!mod}"
@@ -30,10 +32,13 @@ if [ ${#MODULES_MAP[@]} -eq 0 ]; then
     done
 fi
 
+
 if [ ${#MODULES_MAP[@]} -eq 0 ]; then
     echo "No modules selected. Exiting."
     exit 1
 fi
+
+
 
 # --- CHECK FUNCTION ---
 check_inputs_core() {
@@ -95,19 +100,32 @@ check_inputs_core() {
 
     # Summary
     if [[ "$verbose" == "yes" ]]; then
+
         echo ""
         echo "===== SUMMARY ====="
+        echo ""
         echo "----- MODULES -----"
-        echo "Selected modules:"
+        echo "Selected modules:"    
         for mod in "${!MODULES_MAP[@]}"; do
-            [[ "${MODULES_MAP[$mod]}" == "Yes" ]] && echo "  ${mod}.sh"
+          if [[ "${MODULES_MAP[$mod]}" == "Yes" ]]; then
+          echo "  ${mod}.sh"
+          fi
         done
 
         echo ""
-        echo "Found modules:" && [[ ${#found_modules[@]} -gt 0 ]] && printf '  %s.sh\n' "${found_modules[@]}" || echo "  None"
+        echo "Found modules:"
+        if [[ ${#found_modules[@]} -gt 0 ]]; then
+          echo "  ${found_modules[@]}" 
+        else
+          echo "  None"
+        fi
 
         echo ""
-        echo "Missing or non-executable modules:" && [[ ${#missing_modules[@]} -gt 0 ]] && printf '  %s.sh\n' "${missing_modules[@]}" || echo "  None"
+        echo "Missing or non-executable modules:"
+        if [[ ${#missing_modules[@]} -gt 0 ]]; then
+          echo "  ${missing_modules[@]}" 
+        else
+          echo "  None"
 
         echo ""
         echo "----- GENOMES -----"
