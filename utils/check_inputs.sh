@@ -4,16 +4,16 @@ check_inputs_core() {
     local verbose="$1"
     local all_genomes_ok=1
     local all_modules_ok=1
-    found_genomes=()
-    missing_genomes=()
-    found_modules=()
-    missing_modules=()
+    local found_genomes=()
+    local missing_genomes=()
+    local found_modules=()
+    local missing_modules=()
 
-    # Check genomes
+    # --- Check genomes ---
     [[ "$verbose" == "yes" ]] && echo "" && echo "Checking genome files in: $GENOME_DIR"
     for genome in "${GENOMES[@]}"; do
         local genome_path="${GENOME_DIR}/${genome}.fna"
-        if [ -f "$genome_path" ]; then
+        if [[ -f "$genome_path" ]]; then
             [[ "$verbose" == "yes" ]] && echo "[OK] $genome_path"
             found_genomes+=("$genome")
         else
@@ -23,12 +23,12 @@ check_inputs_core() {
         fi
     done
 
-    # Check modules
+    # --- Check modules ---
     [[ "$verbose" == "yes" ]] && echo "" && echo "Checking module scripts in ./modules/"
     for mod in "${!MODULES_MAP[@]}"; do
-        if [ "${MODULES_MAP[$mod]}" == "Yes" ]; then
+        if [[ "${MODULES_MAP[$mod]}" == "Yes" ]]; then
             local mod_path="./modules/${mod}.sh"
-            if [ -x "$mod_path" ]; then
+            if [[ -x "$mod_path" ]]; then
                 [[ "$verbose" == "yes" ]] && echo "[OK] $mod_path"
                 found_modules+=("$mod")
             else
@@ -39,7 +39,7 @@ check_inputs_core() {
         fi
     done
 
-    # Verbose summary
+    # --- Summary (verbose only) ---
     if [[ "$verbose" == "yes" ]]; then
         echo ""
         echo "===== SUMMARY ====="
@@ -50,24 +50,29 @@ check_inputs_core() {
         done
 
         echo ""
-        echo "Found modules:" && printf '  %s.sh\n' "${found_modules[@]}"
+        echo "Found modules:"
+        [[ ${#found_modules[@]} -gt 0 ]] && printf '  %s.sh\n' "${found_modules[@]}" || echo "  None"
 
         echo ""
-        echo "Missing or non-executable modules:" && printf '  %s.sh\n' "${missing_modules[@]}"
+        echo "Missing or non-executable modules:"
+        [[ ${#missing_modules[@]} -gt 0 ]] && printf '  %s.sh\n' "${missing_modules[@]}" || echo "  None"
 
         echo ""
         echo "----- GENOMES -----"
-        echo "Selected genomes:" && printf '  %s\n' "${GENOMES[@]}"
+        echo "Selected genomes:"
+        printf '  %s\n' "${GENOMES[@]}"
 
         echo ""
-        echo "Found genome files:" && printf '  %s\n' "${found_genomes[@]}"
+        echo "Found genome files:"
+        [[ ${#found_genomes[@]} -gt 0 ]] && printf '  %s\n' "${found_genomes[@]}" || echo "  None"
 
         echo ""
-        echo "Missing genome files:" && printf '  %s\n' "${missing_genomes[@]}"
+        echo "Missing genome files:"
+        [[ ${#missing_genomes[@]} -gt 0 ]] && printf '  %s\n' "${missing_genomes[@]}" || echo "  None"
         echo "==================="
     fi
 
-    # Exit on errors
+    # --- Error handling ---
     if (( ! all_genomes_ok )); then
         echo -e "\n\033[31mERROR: One or more genomes are missing.\033[0m"
         printf '  %s\n' "${missing_genomes[@]}"
@@ -94,6 +99,7 @@ check_inputs() {
 check_full_inputs() {
     check_inputs_core "yes"
 }
+
 
 
 
