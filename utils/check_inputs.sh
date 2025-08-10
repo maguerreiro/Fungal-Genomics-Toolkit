@@ -171,7 +171,7 @@ check_inputs_core() {
     fi
 
 
-    if [ "$all_genomes_ok" -eq 1 ]; then
+    if [ "$all_genomes_ok" -ne 1 ]; then
       echo ""
       echo -e "\033[31mERROR\033[0m: One or more genomes are missing."
       echo ""
