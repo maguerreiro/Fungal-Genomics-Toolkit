@@ -147,6 +147,7 @@ check_full_inputs() {
 
   echo ""
   echo "===== SUMMARY ====="
+  echo ""
   echo "----- MODULES -----"
   echo "Selected modules:"
   for mod in "${!MODULES_MAP[@]}"; do
@@ -170,7 +171,6 @@ check_full_inputs() {
 
   echo ""
   echo "----- GENOMES -----"
-  echo ""
   echo "Selected genomes:"
   for genome in "${GENOMES[@]}"; do
     echo "  $genome"
@@ -187,17 +187,19 @@ check_full_inputs() {
   for g in "${missing_genomes[@]}"; do
     echo "  $g"
   done
-   echo "==================="
+    echo ""
+    echo "==================="
 
 
 
- echo ""
+  echo ""
   if [ "$all_genomes_ok" -ne 1 ]; then
     echo "ERROR: One or more genomes are missing."
     echo "Missing genome files:"
       for g in "${missing_genomes[@]}"; do
     echo "  $g"
   done 
+    echo ""
     exit 1
   fi
 
@@ -208,6 +210,7 @@ check_full_inputs() {
   for m in "${missing_modules[@]}"; do
     echo "  ${m}.sh"
   done
+    echo ""
     exit 1
   fi
 
