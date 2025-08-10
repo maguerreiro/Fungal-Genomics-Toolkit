@@ -1,0 +1,46 @@
+Fix: skip genome directory if it is provided on the file name
+    e.g.  ./run_pipeline.sh -g ~/Zymoseptoria_1000_genomes/NCBI_genomes/Zymoseptoria_tritici_IPO323.fna  --check-full
+
+    Checking genome files in: ./genomes
+    [MISSING] ./genomes//home/mguerreiro/Zymoseptoria_1000_genomes/NCBI_genomes/Zymoseptoria_tritici_IPO323.fna.fna
+
+    Checking module scripts in ./modules/
+    [OK] ./modules/funannotate.sh
+    [OK] ./modules/busco.sh
+
+    ===== SUMMARY =====
+
+    ----- MODULES -----
+    Selected modules:
+      funannotate.sh
+      busco.sh
+
+    Found modules:
+      funannotate.sh
+      busco.sh
+
+    Missing or non-executable modules:
+      None.
+
+    ----- GENOMES -----
+    Selected genomes:
+      /home/mguerreiro/Zymoseptoria_1000_genomes/NCBI_genomes/Zymoseptoria_tritici_IPO323.fna
+
+    Found genome files:
+      None.
+
+    Missing genome files:
+      /home/mguerreiro/Zymoseptoria_1000_genomes/NCBI_genomes/Zymoseptoria_tritici_IPO323.fna
+
+    ===================
+
+    ERROR: One or more genomes are missing.
+
+    Missing genome files:
+      /home/mguerreiro/Zymoseptoria_1000_genomes/NCBI_genomes/Zymoseptoria_tritici_IPO323.fna
+
+
+
+Fix: processing the extension file.fna vs file to avoid errors
+
+Fix: add parallel GNU
