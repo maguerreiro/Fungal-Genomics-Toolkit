@@ -117,7 +117,7 @@ check_inputs_core() {
         if [[ ${#found_modules[@]} -gt 0 ]]; then
           echo "  ${found_modules[@]}" 
         else
-          echo "  None"
+          echo "  None."
         fi
 
         echo ""
@@ -125,27 +125,50 @@ check_inputs_core() {
         if [[ ${#missing_modules[@]} -gt 0 ]]; then
           echo "  ${missing_modules[@]}" 
         else
-          echo "  None"
+          echo "  None."
         fi
 
         echo ""
         echo "----- GENOMES -----"
         echo "Selected genomes:" 
-        printf '  %s\n' "${GENOMES[@]}"
+        for genome in "${GENOMES[@]}"; do
+          echo "  $genome"
+        done
 
         echo ""
         echo "Found genome files:" 
         if [[ ${#found_genomes[@]} -gt 0 ]]; then 
-        printf '  %s\n' "${found_genomes[@]}"
+          for g in "${found_genomes[@]}"; do
+            echo "  $g"
+          done
         else
-        echo "  None"
+          echo "  None."
         fi
 
         echo ""
-        echo "Missing genome files:" && [[ ${#missing_genomes[@]} -gt 0 ]] && printf '  %s\n' "${missing_genomes[@]}" || echo "  None"
+        echo "Missing genome files:" 
+        if [[ ${#missing_genomes[@]} -gt 0 ]]; then 
+          for g in "${missing_genomes[@]}"; do
+            echo "  $g"
+          done
+        else
+          echo "  None."
+        fi
+        echo ""
         echo "==================="
     fi
 
+
+    if (( ! all_modules_ok )); then
+    echo ""
+    echo -e "\033[31mERROR\033[0m: One or more module scripts are missing or not executable."
+    echo ""
+    echo "Missing or non-executable modules:"
+      for m in "${missing_modules[@]}"; do
+       echo "  ${m}.sh"
+      done
+    echo ""
+    fi
 
 
     if [ "$all_genomes_ok" -ne 1 ]; then
@@ -160,16 +183,7 @@ check_inputs_core() {
       exit 1
     fi
 
-    if (( ! all_modules_ok )); then
-    echo ""
-    echo -e "\033[31mERROR\033[0m: One or more scripts are missing or not executable."
-    echo ""
-    echo "Missing or non-executable modules:"
-      for m in "${missing_modules[@]}"; do
-       echo "  ${m}.sh"
-      done
-    echo ""
-    fi
+
 
     if [ "$all_modules_ok" -eq 1 ] && [ "$all_genomes_ok" -eq 1 ]; then
         echo ""
@@ -178,7 +192,6 @@ check_inputs_core() {
     fi
     exit 0
 }
-
 
 
 check_inputs() { check_inputs_core "no"; }
