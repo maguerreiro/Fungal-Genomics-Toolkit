@@ -195,7 +195,7 @@ check_full_inputs() {
   echo ""
   if [ "$all_genomes_ok" -ne 1 ]; then
     echo "ERROR: One or more genomes are missing."
-    echo "Missing genome files:"
+    echo "\033[31m Missing genome files:"
       for g in "${missing_genomes[@]}"; do
          echo "  $g"
       done 
