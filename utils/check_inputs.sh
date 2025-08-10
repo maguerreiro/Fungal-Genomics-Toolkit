@@ -126,6 +126,7 @@ check_inputs_core() {
           echo "  ${missing_modules[@]}" 
         else
           echo "  None"
+        fi
 
         echo ""
         echo "----- GENOMES -----"
@@ -149,7 +150,7 @@ check_inputs_core() {
 
     if [ "$all_genomes_ok" -ne 1 ]; then
       echo ""
-      echo -e "\033[31mERROR: One or more genomes are missing.\033[0m"
+      echo -e "\033[31mERROR\033[0m: One or more genomes are missing."
       echo ""
       echo "Missing genome files:"
         for g in "${missing_genomes[@]}"; do
@@ -161,7 +162,7 @@ check_inputs_core() {
 
     if (( ! all_modules_ok )); then
     echo ""
-    echo -e "\033[31mERROR: One or more scripts are missing or not executable.\033[0m"
+    echo -e "\033[31mERROR\033[0m: One or more scripts are missing or not executable."
     echo ""
     echo "Missing or non-executable modules:"
       for m in "${missing_modules[@]}"; do
@@ -177,7 +178,6 @@ check_inputs_core() {
     fi
     exit 0
 }
-
 
 
 
