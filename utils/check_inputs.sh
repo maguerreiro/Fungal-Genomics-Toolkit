@@ -115,7 +115,9 @@ check_inputs_core() {
         echo ""
         echo "Found modules:"
         if [ ${#found_modules[@]} -gt 0 ]; then
-          echo "  ${found_modules[@]}" 
+          for m in "${found_modules[@]}"; do
+            echo "  ${m}.sh"
+          done
         else
           echo "  None."
         fi
@@ -123,7 +125,9 @@ check_inputs_core() {
         echo ""
         echo "Missing or non-executable modules:"
         if [ ${#missing_modules[@]} -gt 0 ]; then
-          echo "  ${missing_modules[@]}" 
+          for m in "${missing_modules[@]}"; do
+            echo "  ${m}.sh"
+          done
         else
           echo "  None."
         fi
