@@ -75,46 +75,6 @@ check_inputs() {
     fi
   done
 
-#  echo ""
-#  echo "===== SUMMARY ====="
-#  echo "Selected modules:"
-  for mod in "${!MODULES_MAP[@]}"; do
-    if [ "${MODULES_MAP[$mod]}" == "Yes" ]; then
-#      echo "  ${mod}.sh"
-    fi
-  done
-
-#  echo ""
-#  echo "Selected genomes:"
-  for genome in "${GENOMES[@]}"; do
-#    echo "  $genome"
-  done
-#    echo "==================="
-
-#  echo ""
-  echo "Found genome files:"
-#  for g in "${found_genomes[@]}"; do
-    echo "  $g"
-  done
-
-#  echo ""
-#  echo "Missing genome files:"
-  for g in "${missing_genomes[@]}"; do
-#    echo "  $g"
-  done
-
-#  echo ""
-#  echo "Found modules:"
-  for m in "${found_modules[@]}"; do
-#    echo "  ${m}.sh"
-  done
-
-#  echo ""
-#  echo "Missing or non-executable modules:"
-  for m in "${missing_modules[@]}"; do
-#    echo "  ${m}.sh"
-  done
-
  echo ""
   if [ "$all_genomes_ok" -ne 1 ]; then
     echo "ERROR: One or more genomes are missing."
