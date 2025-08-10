@@ -134,9 +134,9 @@ check_inputs_core() {
       echo ""
     fi
     exit 0
-  }
-
 }
+
+
 
 
 check_inputs() { check_inputs_core "no"; }
