@@ -51,7 +51,7 @@ check_inputs_core() {
   local missing_modules=()
 
  # Check genomes
-    if [[ "$verbose" == "yes" ]]; then
+    if [ "$verbose" == "yes" ]; then
         echo ""
         echo "Checking genome files in: $GENOME_DIR"
         for genome in "${GENOMES[@]}"; do
@@ -81,12 +81,12 @@ check_inputs_core() {
         if [ "${MODULES_MAP[$mod]}" == "Yes" ]; then
             mod_path="./modules/${mod}.sh"
             if [ -x "$mod_path" ]; then
-                if [[ "$verbose" == "yes" ]]; then
+                if [ "$verbose" == "yes" ]; then
                     echo "[OK] $mod_path"
                 fi
                 found_modules+=("$mod")
             else
-                if [[ "$verbose" == "yes" ]]; then
+                if [ "$verbose" == "yes" ]; then
                     echo "[MISSING or NOT EXECUTABLE] $mod_path"
                 fi
                 missing_modules+=("$mod")
@@ -107,14 +107,14 @@ check_inputs_core() {
         echo "----- MODULES -----"
         echo "Selected modules:"    
         for mod in "${!MODULES_MAP[@]}"; do
-          if [[ "${MODULES_MAP[$mod]}" == "Yes" ]]; then
+          if [ "${MODULES_MAP[$mod]}" == "Yes" ]; then
           echo "  ${mod}.sh"
           fi
         done
 
         echo ""
         echo "Found modules:"
-        if [[ ${#found_modules[@]} -gt 0 ]]; then
+        if [ ${#found_modules[@]} -gt 0 ]; then
           echo "  ${found_modules[@]}" 
         else
           echo "  None."
@@ -122,7 +122,7 @@ check_inputs_core() {
 
         echo ""
         echo "Missing or non-executable modules:"
-        if [[ ${#missing_modules[@]} -gt 0 ]]; then
+        if [ ${#missing_modules[@]} -gt 0 ]; then
           echo "  ${missing_modules[@]}" 
         else
           echo "  None."
@@ -159,7 +159,7 @@ check_inputs_core() {
     fi
 
 
-    if (( ! all_modules_ok )); then
+    if [ "$all_modules_ok" -ne 1 ]; then
     echo ""
     echo -e "\033[31mERROR\033[0m: One or more module scripts are missing or not executable."
     echo ""
@@ -171,7 +171,7 @@ check_inputs_core() {
     fi
 
 
-    if [ "$all_genomes_ok" -ne 1 ]; then
+    if [ "$all_genomes_ok" -eq 1 ]; then
       echo ""
       echo -e "\033[31mERROR\033[0m: One or more genomes are missing."
       echo ""
