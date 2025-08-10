@@ -1,3 +1,5 @@
+############
+
 Fix: skip genome directory if it is provided on the file name
     e.g.  ./run_pipeline.sh -g ~/Zymoseptoria_1000_genomes/NCBI_genomes/Zymoseptoria_tritici_IPO323.fna  --check-full
 
@@ -40,7 +42,12 @@ Fix: skip genome directory if it is provided on the file name
       /home/mguerreiro/Zymoseptoria_1000_genomes/NCBI_genomes/Zymoseptoria_tritici_IPO323.fna
 
 
+############
 
 Fix: processing the extension file.fna vs file to avoid errors
 
+############
+
 Fix: add parallel GNU
+
+############
