@@ -93,10 +93,16 @@ check_inputs_core() {
 
         echo ""
         echo "----- GENOMES -----"
-        echo "Selected genomes:" && printf '  %s\n' "${GENOMES[@]}"
+        echo "Selected genomes:" 
+        printf '  %s\n' "${GENOMES[@]}"
 
         echo ""
-        echo "Found genome files:" && [[ ${#found_genomes[@]} -gt 0 ]] && printf '  %s\n' "${found_genomes[@]}" || echo "  None"
+        echo "Found genome files:" 
+        if [[ ${#found_genomes[@]} -gt 0 ]]; then 
+        printf '  %s\n' "${found_genomes[@]}"
+        else
+        echo "  None"
+        fi
 
         echo ""
         echo "Missing genome files:" && [[ ${#missing_genomes[@]} -gt 0 ]] && printf '  %s\n' "${missing_genomes[@]}" || echo "  None"
