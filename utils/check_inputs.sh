@@ -88,14 +88,16 @@ check_inputs() {
    echo ""
   if [ "$all_modules_ok" -ne 1 ]; then
     echo "ERROR: One or more scripts are missing or not executable."
-      echo "Missing or non-executable modules:"
+    echo ""
+    echo "Missing or non-executable modules:"
   for m in "${missing_modules[@]}"; do
     echo "  ${m}.sh"
   done
+    echo ""
     exit 1
   fi
 
-     echo ""
+
   if [ "$all_modules_ok" -eq 1  & "$all_genomes_ok" -eq 1]; then
     echo "All genomes and modules were found."
   fi
@@ -145,30 +147,12 @@ check_full_inputs() {
 
   echo ""
   echo "===== SUMMARY ====="
+  echo "----- MODULES -----"
   echo "Selected modules:"
   for mod in "${!MODULES_MAP[@]}"; do
     if [ "${MODULES_MAP[$mod]}" == "Yes" ]; then
       echo "  ${mod}.sh"
     fi
-  done
-
-  echo ""
-  echo "Selected genomes:"
-  for genome in "${GENOMES[@]}"; do
-    echo "  $genome"
-  done
-    echo "==================="
-
-  echo ""
-  echo "Found genome files:"
-  for g in "${found_genomes[@]}"; do
-    echo "  $g"
-  done
-
-  echo ""
-  echo "Missing genome files:"
-  for g in "${missing_genomes[@]}"; do
-    echo "  $g"
   done
 
   echo ""
@@ -182,6 +166,30 @@ check_full_inputs() {
   for m in "${missing_modules[@]}"; do
     echo "  ${m}.sh"
   done
+  
+
+  echo ""
+  echo "----- GENOMES -----"
+  echo ""
+  echo "Selected genomes:"
+  for genome in "${GENOMES[@]}"; do
+    echo "  $genome"
+  done
+ 
+  echo ""
+  echo "Found genome files:"
+  for g in "${found_genomes[@]}"; do
+    echo "  $g"
+  done
+
+  echo ""
+  echo "Missing genome files:"
+  for g in "${missing_genomes[@]}"; do
+    echo "  $g"
+  done
+   echo "==================="
+
+
 
  echo ""
   if [ "$all_genomes_ok" -ne 1 ]; then
