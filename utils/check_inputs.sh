@@ -99,7 +99,7 @@ check_inputs() {
   fi
 
    echo ""
-  if [ "$all_modules_ok" -eq 1  && "$all_genomes_ok" -eq 1]; then
+  if [ "$all_modules_ok" -eq 1  && "$all_genomes_ok" -eq 1 ]; then
     echo "All genomes and modules were found."
   fi
      echo ""
