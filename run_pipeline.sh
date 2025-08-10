@@ -14,7 +14,7 @@ if [ "${CHECK:-0}" -eq 1 ]; then
   check_inputs
 fi
 
-if [ "${CHECK-FULL:-0}" -eq 1 ]; then
+if [ "${CHECK_FULL:-0}" -eq 1 ]; then
   check_full_inputs
 fi
 

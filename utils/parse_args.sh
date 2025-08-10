@@ -7,7 +7,7 @@ SELECTED_GENOME=()
 GENOMES_FILE=""
 SHOW_HELP=0
 CHECK=0
-CHECK-FULL=0
+CHECK_FULL=0
 
 declare -A MODULES_MAP
 
@@ -88,7 +88,7 @@ while [[ $# -gt 0 ]]; do
       ;;
 
     --check-full)
-      CHECK-FULL=1
+      CHECK_FULL=1
       shift
       ;;
 
