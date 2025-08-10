@@ -193,7 +193,7 @@ check_inputs_core() {
 
     if [ "$all_modules_ok" -eq 1 ] && [ "$all_genomes_ok" -eq 1 ]; then
         echo ""
-        echo "\033[32mOK\033[0m: All genomes and modules were found."
+        echo -e "\033[32mOK\033[0m: All genomes and modules were found."
       echo ""
     fi
     exit 0
