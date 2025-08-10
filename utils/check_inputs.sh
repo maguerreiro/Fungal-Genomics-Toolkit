@@ -40,7 +40,7 @@ fi
 
 
 
-# --- CHECK FUNCTION ---
+# --- CHECK FUNCTION --- #
 check_inputs_core() {
   local verbose="$1"
   local all_genomes_ok=1
