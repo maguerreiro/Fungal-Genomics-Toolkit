@@ -37,43 +37,61 @@ fi
 
 # --- CHECK FUNCTION ---
 check_inputs_core() {
-    local verbose="$1"
-    local all_genomes_ok=1
-    local all_modules_ok=1
-    local found_genomes=()
-    local missing_genomes=()
-    local found_modules=()
-    local missing_modules=()
+  local verbose="$1"
+  local all_genomes_ok=1
+  local all_modules_ok=1
+  local found_genomes=()
+  local missing_genomes=()
+  local found_modules=()
+  local missing_modules=()
 
-    # Check genomes
-    [[ "$verbose" == "yes" ]] && echo "" && echo "Checking genome files in: $GENOME_DIR"
-    for genome in "${GENOMES[@]}"; do
-        local genome_path="${GENOME_DIR}/${genome}.fna"
-        if [[ -f "$genome_path" ]]; then
-            [[ "$verbose" == "yes" ]] && echo "[OK] $genome_path"
-            found_genomes+=("$genome")
-        else
-            [[ "$verbose" == "yes" ]] && echo "[MISSING] $genome_path"
-            missing_genomes+=("$genome")
-            all_genomes_ok=0
-        fi
-    done
+ # Check genomes
+    if [[ "$verbose" == "yes" ]]; then
+        echo ""
+        echo "Checking genome files in: $GENOME_DIR"
+        for genome in "${GENOMES[@]}"; do
+            genome_path="${GENOME_DIR}/${genome}.fna"  # Adjust extension if needed
+            if [ -f "$genome_path" ]; then
+                if [[ "$verbose" == "yes" ]]; then
+                    echo "[OK] $genome_path"
+                fi
+                found_genomes+=("$genome")
+            else
+                if [[ "$verbose" == "yes" ]]; then
+                    echo "[MISSING] $genome_path"
+                fi
+                missing_genomes+=("$genome")
+                all_genomes_ok=0
+            fi
+        done
+    fi
 
-    # Check modules
-    [[ "$verbose" == "yes" ]] && echo "" && echo "Checking module scripts in ./modules/"
+
+# Check modules
+    if [[ "$verbose" == "yes" ]]; then
+        echo ""
+        echo "Checking module scripts in ./modules/"
+    fi
     for mod in "${!MODULES_MAP[@]}"; do
-        if [[ "${MODULES_MAP[$mod]}" == "Yes" ]]; then
-            local mod_path="./modules/${mod}.sh"
-            if [[ -x "$mod_path" ]]; then
-                [[ "$verbose" == "yes" ]] && echo "[OK] $mod_path"
+        if [ "${MODULES_MAP[$mod]}" == "Yes" ]; then
+            mod_path="./modules/${mod}.sh"
+            if [ -x "$mod_path" ]; then
+                if [[ "$verbose" == "yes" ]]; then
+                    echo "[OK] $mod_path"
+                fi
                 found_modules+=("$mod")
             else
-                [[ "$verbose" == "yes" ]] && echo "[MISSING or NOT EXECUTABLE] $mod_path"
+                if [[ "$verbose" == "yes" ]]; then
+                    echo "[MISSING or NOT EXECUTABLE] $mod_path"
+                fi
                 missing_modules+=("$mod")
                 all_modules_ok=0
             fi
         fi
     done
+
+
+
 
     # Summary
     if [[ "$verbose" == "yes" ]]; then
